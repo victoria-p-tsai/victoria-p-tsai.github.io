@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Tempura Jump</title>
+    <link rel="stylesheet" href="./tempura-jump.css"/>
+    <script src="./constants.js"></script>
+    <script src="./tempura-jump.js"></script>
+
+    <link rel="icon" type="image/x-icon" href="">
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="intro">
+        <div id="green-screen"></div>
+        <div id="leaf-container"></div>
+        <div id="leaf"></div>
+
+        <img id="bird" src="./assets/images/intro/bird.png" alt="bird" style="width:50px"/>
+        <img id="branch" src="./assets/images/intro/branch.png" alt="branch" style="width:100px"/>
+
+        <div id="flower1" class="flower"></div>
+        <div id="flower2" class="flower"></div>
+        <div id="flower3" class="flower"></div>
+        <div id="flower4" class="flower"></div>
+
+        <div class = warp>
+          <div id="warp1" aria-labelledby="warp-label">
+            <span aria-role="presentation">
+              <span id="warp__0" class="letters">
+                V
+              </span>
+              <span id="warp__1" class="letters">
+                I
+              </span>
+              <span id="warp__2" class="letters">
+                C
+              </span>
+              <span id="warp__3" class="letters">
+                T
+              </span>
+              <span id="warp__4" class="letters">
+                O
+              </span>
+              <span id="warp__5" class="letters">
+                R
+              </span>
+              <span id="warp__6" class="letters">
+                I
+              </span>
+              <span id="warp__7" class="letters">
+                A
+              </span>
+            </span>
+          </div>
+
+          <div id="warp2" aria-labelledby="warp-label">
+            <span aria-role="presentation">
+              <span id="warp__8" class="letters">
+                T
+              </span>
+              <span id="warp__9" class="letters">
+                S
+              </span>
+              <span id="warp__10" class="letters">
+                A
+              </span>
+              <span id="warp__11" class="letters">
+                I
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <button id="intro-play">
+          <img src="./assets/images/intro/intro-play.png" alt="play button" style="width:380px" onclick="initialSetup()"/>
+        </button>
+        
+        <button id="skip-intro">
+          <img src="./assets/images/intro/skip-intro-leaf.png" alt="skip intro button" style="width:130px" onclick="initialSetup()" />
+        </button>
+
+      </div>
+
+      <div id="start" class="screen">
+        <!-- play button -->
+        <button type="button" id="wrap" onclick="cutscene()">
+            <img src="./assets/images/other/play-wrap.png" alt="play button" style="width:123px;height:197.1px;">
+        </button>
+
+        <img id="sushi" src="./assets/images/other/play-sushi.png" alt="sushi" style="width:124.5px;height:22.65px;">
+        <img id="stuffing" src="./assets/images/other/stuffing.png" alt="stuffing" style="width:9.92px;height:11.3px;">
+
+        <!-- settings button -->
+        <button type="button" class=home-buttons id="settings" onclick="goToSettings()">
+          <img src="./assets/images/other/settings.png" alt="settings button" style="width:32.56px;height:26.94px;">
+        </button>
+
+        <!-- how to button -->
+        <button type="button" class=home-buttons id="how-to" onclick="goToHowTo()">
+          <img src="./assets/images/other/light-how-to.png" id="how-to-png" alt="how to button" style="width:25px">
+        </button>
+
+        <!-- credits button -->
+        <button type="button" class=home-buttons id="credits" onclick="goToCredits()">
+          <img src="./assets/images/other/credits.png" alt="credits button" style="width:44px">
+        </button>
+      </div>
+
+      <!-- home button -->
+      <button type="button" id="home" onclick="home()">
+        <img src="./assets/images/other/home.png" alt="home button" style="width:37px;height:38.72px">
+      </button>
+
+      <div id="settings-wrapper">
+        <!-- volume -->
+        <div class="slider-container">
+          <input type="range" min="0" max="100" value="100" class="slider" id="m-vol" oninput="fVolLevel('#m-vol', '#m-val')">
+          <input type="range" min="0" max="100" value="100" class="slider" id="bg-vol" oninput="fVolLevel('#bg-vol', '#bg-val')">
+          <input type="range" min="0" max="100" value="100" class="slider" id="j-vol" oninput="fVolLevel('#j-vol', '#j-val')">
+        </div>
+
+        <div class="val" id="m-val">100</div>
+        <div class="val" id="bg-val">100</div>
+        <div class="val" id="j-val">100</div>
+
+        <!-- light/dark mode -->
+        <button type="button" id="dark" class="mode" onclick="dark()">
+          <img src="./assets/images/other/light-dark-btn.png" id="darkImg" alt="dark mode button" style="width:41px">
+        </button>
+        <button type="button" id="light" class="mode" onclick="light()">
+          <img src="./assets/images/other/light-light-btn.png" id="lightImg" alt="light mode button" style="width:45px">
+        </button>
+      </div>
+
+      <!-- how to instructions -->
+      <div id="instructions">
+        Control the tempura's left and right position with your mouse.
+        <br><br>
+        The tempura will automatically jump up, and platforms will slide down as you jump higher.
+      </div>
+
+      <canvas id="board" width="360px" height="576px"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  </body>
+</html>
